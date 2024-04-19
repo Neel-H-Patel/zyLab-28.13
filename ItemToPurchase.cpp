@@ -3,9 +3,4 @@ using namespace std;
 
 #include "ItemToPurchase.h"
 
-int main() {
-   
-   /* Type your code here */
-   
-   return 0;
-}
+/* Type your code here */
