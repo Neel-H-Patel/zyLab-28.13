@@ -29,17 +29,17 @@ int main() {
   cout << "Item 2" << endl << "Enter the item name:" << endl;
   string name2;
   getline(cin, name2);
-  item1.SetName(name2);
+  item2.SetName(name2);
 
   cout << "Enter the item price:" << endl;
   int price2;
   cin >> price2;
-  item1.SetPrice(price2);
+  item2.SetPrice(price2);
 
   cout << "Enter the item quantity:" << endl;
   int quantity2;
   cin >> quantity2;
-  item1.SetQuantity(quantity2);
+  item2.SetQuantity(quantity2);
 
   cout << endl;
 
