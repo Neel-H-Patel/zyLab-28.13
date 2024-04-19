@@ -20,7 +20,9 @@ int main() {
   cout << "Enter the item quantity:" << endl;
   int quantity1;
   cin >> quantity1;
-  item1.SetPrice(quantity1);
+  item1.SetQuantity(quantity1);
+
+  cout << endl;
   
   cin.ignore();
 
@@ -37,7 +39,9 @@ int main() {
   cout << "Enter the item quantity:" << endl;
   int quantity2;
   cin >> quantity2;
-  item1.SetPrice(quantity2);
+  item1.SetQuantity(quantity2);
+
+  cout << endl;
 
   cout << "TOTAL COST" << endl;
 
