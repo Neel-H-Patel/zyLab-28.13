@@ -19,6 +19,14 @@ int ItemToPurchase::GetPrice() {
  return itemPrice;  
 }
 
+void ItemToPurchase::PrintItemCost() {
+   cout << itemName << " " << itemQuantity << " @ $" << itemPrice << " = $" << itemPrice * itemQuantity << endl;
+}
+
+void ItemToPurchase::PrintItemDescription() {
+   cout << itemName << ": " << itemDescription << endl;
+}
+
 void ItemToPurchase::SetName(string name) {
  itemName = name;  
 }

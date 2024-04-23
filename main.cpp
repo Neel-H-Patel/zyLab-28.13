@@ -1,21 +1,63 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
-#include "ItemToPurchase.h"
+#include "ShoppingCart.h"
+
+
+void PrintMenu() {
+   cout << "MENU" << endl;
+   cout << "a - Add item to cart" << endl;
+   cout << "d - Remove item from cart" << endl;
+   cout << "c - Change item quantity" << endl;
+   cout << "i - Output items' descriptions" << endl;
+   cout << "o - Output shopping cart" << endl;
+   cout << "q - Quit" << endl;
+}
+
+void ExecuteMenu(char option, ShoppingCart& theCart) {
+   
+   if (option == 'q') {
+      break;
+   } else {
+      switch(option) {
+         case 'a':
+            theCart.AddItem(ItemToPurchase item);
+            break;
+         case 'd':
+            theCart.RemoveItem(string itemName);
+            break;
+         case 'c':
+            theCart.ModifyItem(ItemToPurchase item);
+            break;
+         case 'i':
+            theCart.PrintDescriptions();
+            break;
+         case 'o':
+            theCart.PrintTotal();
+            break;
+         default:
+            cout << "Choose an option:" << endl;
+            cin >> option;
+            
+      }
+   }
+}
 
 int main() {
-   
-  ItemToPurchase item1, item2;
 
-  cout << "Item 1" << endl << "Enter the item name:" << endl;
-  string name1;
-  getline(cin, name1);
-  item1.SetName(name1);
+  cout << "Enter customer's name:" << endl;
+  string name;
+  getline(cin, name);
 
-  cout << "Enter the item price:" << endl;
-  int price1;
-  cin >> price1;
-  item1.SetPrice(price1);
+  cout << "Enter today's date:" << endl;
+  string date;
+  getline(cin, date);
+  
+  ShoppingCart cart(name, date);
+  
+  cout << "Customer name: " << cart.GetCustomerName() << endl;
+  cout << "Today's date: " << cart.GetDate() << endl;
 
   cout << "Enter the item quantity:" << endl;
   int quantity1;
@@ -58,5 +100,6 @@ int main() {
   cout << "Total: $" << totalcost << endl;
 
 
-  return 0;
+   
+   return 0;
 }

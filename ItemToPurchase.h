@@ -15,11 +15,18 @@ public:
    
    void SetQuantity(int quantity);
    int GetQuantity();
+   
+   void SetDescription(string description);
+   string GetDescription();
+   
+   void PrintItemCost();
+   void PrintItemDescription();
 
 private:
    string itemName = "none";
    int itemPrice = 0;
    int itemQuantity = 0;
+   string itemDescription = "none";
 };
 
 #endif
