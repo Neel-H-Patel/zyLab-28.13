@@ -1,7 +1,8 @@
-#ifndef SHOPPING_CART_H
-#define SHOPPING_CART_H
+#ifndef SHOPPINGCART_H
+#define SHOPPINGCART_H
 
 #include <string>
+#include <vector>
 using namespace std;
 
 #include "ItemToPurchase.h"
@@ -15,11 +16,11 @@ public:
    string GetCustomerName();
    string GetDate();
    
-   void AddItem(ItemToPurchase item);
+   void AddItem(ItemToPurchase& item);
    
    void RemoveItem(string itemName);
    
-   void ModifyItem(ItemToPurchase item);
+   void ModifyItem(ItemToPurchase& item);
    
    int GetNumItemsInCart();
    
@@ -32,7 +33,7 @@ public:
 private:
    string customerName = "none";
    string currentDate = "January 1, 2016";
-   vector <ItemToPurchase> cartItems;
+   vector<ItemToPurchase> cartItems;
 };
 
 #endif

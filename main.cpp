@@ -3,103 +3,124 @@
 using namespace std;
 
 #include "ShoppingCart.h"
+#include "ItemToPurchase.h"
 
 
 void PrintMenu() {
-   cout << "MENU" << endl;
-   cout << "a - Add item to cart" << endl;
-   cout << "d - Remove item from cart" << endl;
-   cout << "c - Change item quantity" << endl;
-   cout << "i - Output items' descriptions" << endl;
-   cout << "o - Output shopping cart" << endl;
-   cout << "q - Quit" << endl;
+    cout << "\nMENU" << endl;
+    cout << "a - Add item to cart" << endl;
+    cout << "d - Remove item from cart" << endl;
+    cout << "c - Change item quantity" << endl;
+    cout << "i - Output items' descriptions" << endl;
+    cout << "o - Output shopping cart" << endl;
+    cout << "q - Quit" << endl;
 }
 
-void ExecuteMenu(char option, ShoppingCart& theCart) {
-   
-   if (option == 'q') {
-      break;
-   } else {
-      switch(option) {
-         case 'a':
-            theCart.AddItem(ItemToPurchase item);
+// Step 5: Implement the ExecuteMenu() function
+void ExecuteMenu(char choice, ShoppingCart& cart) {
+    switch (choice) {
+        case 'a': {
+            // Add item to cart
+            cout << "\nADD ITEM TO CART" << endl;
+            string itemName, itemDescription;
+            int itemPrice, itemQuantity;
+
+            cout << "Enter the item name:" << endl;
+            getline(cin, itemName);
+
+            cout << "Enter the item description:" << endl;
+            getline(cin, itemDescription);
+
+            cout << "Enter the item price:" << endl;
+            cin >> itemPrice;
+
+            cout << "Enter the item quantity:" << endl;
+            cin >> itemQuantity;
+
+            cin.ignore(); // Ignore the newline character left in the input buffer
+
+            ItemToPurchase newItem(itemName, itemDescription, itemPrice, itemQuantity);
+            cart.AddItem(newItem);
             break;
-         case 'd':
-            theCart.RemoveItem(string itemName);
+        }
+        case 'd': {
+            // Remove item from cart
+            cout << "\nREMOVE ITEM FROM CART" << endl;
+            string itemName;
+            cout << "Enter name of item to remove:" << endl;
+            getline(cin, itemName);
+            cart.RemoveItem(itemName);
             break;
-         case 'c':
-            theCart.ModifyItem(ItemToPurchase item);
+        }
+        case 'c': {
+            // Change item quantity
+            cout << "\nCHANGE ITEM QUANTITY" << endl;
+            string itemName;
+            int newQuantity;
+
+            cout << "Enter the item name:" << endl;
+            getline(cin, itemName);
+
+            cout << "Enter the new quantity:" << endl;
+            cin >> newQuantity;
+
+            cin.ignore(); // Ignore the newline character left in the input buffer
+
+            ItemToPurchase newItem;
+            newItem.SetName(itemName);
+            newItem.SetQuantity(newQuantity);
+            cart.ModifyItem(newItem);
             break;
-         case 'i':
-            theCart.PrintDescriptions();
+        }
+        case 'i':
+            // Output items' descriptions
+            cout << "\nOUTPUT ITEMS' DESCRIPTIONS" << endl;
+            cart.PrintDescriptions();
             break;
-         case 'o':
-            theCart.PrintTotal();
+        case 'o':
+            // Output shopping cart
+            cout << "\nOUTPUT SHOPPING CART" << endl;
+            cart.PrintTotal();
             break;
-         default:
-            cout << "Choose an option:" << endl;
-            cin >> option;
-            
-      }
-   }
+        case 'q':
+            // Quit
+            cout << "Goodbye!" << endl;
+            break;
+        default:
+            // Invalid choice
+            cout << "Invalid option! Please try again." << endl;
+    }
 }
 
 int main() {
+    // Step 3: Prompt the user for a customer's name and today's date
+    cout << "Enter customer's name:" << endl;
+    string customerName;
+    getline(cin, customerName);
 
-  cout << "Enter customer's name:" << endl;
-  string name;
-  getline(cin, name);
+    cout << "Enter today's date:" << endl;
+    string currentDate;
+    getline(cin, currentDate);
 
-  cout << "Enter today's date:" << endl;
-  string date;
-  getline(cin, date);
-  
-  ShoppingCart cart(name, date);
-  
-  cout << "Customer name: " << cart.GetCustomerName() << endl;
-  cout << "Today's date: " << cart.GetDate() << endl;
+    // Output the name and date
+    cout << "\nCustomer name: " << customerName << endl;
+    cout << "Today's date: " << currentDate << endl;
 
-  cout << "Enter the item quantity:" << endl;
-  int quantity1;
-  cin >> quantity1;
-  item1.SetQuantity(quantity1);
+    // Create an object of type ShoppingCart
+    ShoppingCart cart(customerName, currentDate);
 
-  cout << endl;
-  
-  cin.ignore();
+    char choice;
 
-  cout << "Item 2" << endl << "Enter the item name:" << endl;
-  string name2;
-  getline(cin, name2);
-  item2.SetName(name2);
+    // Step 5: Display the menu, prompt for the user's choice, and execute the option
+    do {
+        PrintMenu();
+        cout << "Choose an option:" << endl;
+        cin >> choice;
+        cin.ignore(); // Ignore the newline character left in the input buffer
 
-  cout << "Enter the item price:" << endl;
-  int price2;
-  cin >> price2;
-  item2.SetPrice(price2);
+        ExecuteMenu(choice, cart);
 
-  cout << "Enter the item quantity:" << endl;
-  int quantity2;
-  cin >> quantity2;
-  item2.SetQuantity(quantity2);
+    } while (choice != 'q');
 
-  cout << endl;
-
-  cout << "TOTAL COST" << endl;
-
-  int cost1 = item1.GetQuantity() * item1.GetPrice();
-  int cost2 = item2.GetQuantity() * item2.GetPrice();
-
-  cout << item1.GetName() << " " << item1.GetQuantity() << " @ $" << item1.GetPrice() << " = $" << cost1 << endl;
-  cout << item2.GetName() << " " << item2.GetQuantity() << " @ $" << item2.GetPrice() << " = $" << cost2 << endl;
-
-  cout << endl;
-
-  int totalcost = cost1 + cost2;
-
-  cout << "Total: $" << totalcost << endl;
-
-
-   
-   return 0;
+    return 0;
 }

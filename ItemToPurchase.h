@@ -7,6 +7,7 @@ using namespace std;
 class ItemToPurchase { 
 public:
    ItemToPurchase();
+   ItemToPurchase(string name, string description, int price, int quantity);
    void SetName(string name);
    string GetName();
    
