@@ -46,7 +46,7 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
             
         }
         case 'f': {
-           cout << "Enter customer's name:" << endl;
+            cout << "Enter customer's name:" << endl;
 
             cout << "Enter today's date:" << endl;
 
@@ -124,42 +124,39 @@ int main() {
     
     ExecuteMenu(choice, cart);
         if (choice == 'q') {
-           ExecuteMenu('f', cart);
-           cout << "\nCustomer name: " << customerName << endl;
-           cout << "Today's date: " << currentDate << endl;
+          ExecuteMenu('f', cart);
+          cout << "\nCustomer name: " << customerName << endl;
+          cout << "Today's date: " << currentDate << endl;
         } else {
-         if (choice == 'f') {
+          if (choice == 'f') {
 
-             // Output the name and date
-             cout << "\nCustomer name: " << customerName << endl;
-             cout << "Today's date: " << currentDate << endl;
-             cout << endl;
-             PrintMenu();
-             cout << endl;
-             cout << "Choose an option:" << endl;
-        } else {
-           cout << endl;
-           PrintMenu();
-           cout << endl;
-        }
+            // Output the name and date
+            cout << "\nCustomer name: " << customerName << endl;
+            cout << "Today's date: " << currentDate << endl;
+            cout << endl;
+            PrintMenu();
+            cout << endl;
+            cout << "Choose an option:" << endl;
+          } else {
+            cout << endl;
+            PrintMenu();
+            cout << endl;
+          }
         
 
-    // Step 5: Display the menu, prompt for the user's choice, and execute the option
-       do {
-        cout << "Choose an option:" << endl;
-        cin >> choice;
-        cin.ignore();
-        // Ignore the newline character left in the input buffer
-        ExecuteMenu(choice, cart);
-        if (choice == 'a' || choice == 'd' || choice == 'c' || choice == 'i' || choice == 'o') {
-           cout << endl;
-      PrintMenu();
-      cout << endl;
-   }
-        
-        
-
-    } while (choice != 'q');
+          // Step 5: Display the menu, prompt for the user's choice, and execute the option
+          do {
+            cout << "Choose an option:" << endl;
+            cin >> choice;
+            cin.ignore();
+            // Ignore the newline character left in the input buffer
+            ExecuteMenu(choice, cart);
+            if (choice == 'a' || choice == 'd' || choice == 'c' || choice == 'i' || choice == 'o') {
+              cout << endl;
+              PrintMenu();
+              cout << endl;
+            }
+          } while (choice != 'q');
         }
 
     return 0;
