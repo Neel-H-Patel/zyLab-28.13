@@ -7,7 +7,7 @@ using namespace std;
 
 
 void PrintMenu() {
-    cout << "\nMENU" << endl;
+    cout << "MENU" << endl;
     cout << "a - Add item to cart" << endl;
     cout << "d - Remove item from cart" << endl;
     cout << "c - Change item quantity" << endl;
@@ -21,7 +21,7 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
     switch (choice) {
         case 'a': {
             // Add item to cart
-            cout << "\nADD ITEM TO CART" << endl;
+            cout << "ADD ITEM TO CART" << endl;
             string itemName, itemDescription;
             int itemPrice, itemQuantity;
 
@@ -37,11 +37,20 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
             cout << "Enter the item quantity:" << endl;
             cin >> itemQuantity;
 
-            cin.ignore(); // Ignore the newline character left in the input buffer
+            // Ignore the newline character left in the input buffer
 
             ItemToPurchase newItem(itemName, itemDescription, itemPrice, itemQuantity);
             cart.AddItem(newItem);
+            
             break;
+            
+        }
+        case 'f': {
+           cout << "Enter customer's name:" << endl;
+
+            cout << "Enter today's date:" << endl;
+
+             break;
         }
         case 'd': {
             // Remove item from cart
@@ -50,6 +59,7 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
             cout << "Enter name of item to remove:" << endl;
             getline(cin, itemName);
             cart.RemoveItem(itemName);
+            
             break;
         }
         case 'c': {
@@ -70,57 +80,87 @@ void ExecuteMenu(char choice, ShoppingCart& cart) {
             newItem.SetName(itemName);
             newItem.SetQuantity(newQuantity);
             cart.ModifyItem(newItem);
+            
             break;
         }
         case 'i':
             // Output items' descriptions
             cout << "\nOUTPUT ITEMS' DESCRIPTIONS" << endl;
             cart.PrintDescriptions();
+            
             break;
         case 'o':
             // Output shopping cart
-            cout << "\nOUTPUT SHOPPING CART" << endl;
+            cout << "OUTPUT SHOPPING CART" << endl;
+            
             cart.PrintTotal();
             break;
         case 'q':
             // Quit
-            cout << "Goodbye!" << endl;
             break;
         default:
             // Invalid choice
-            cout << "Invalid option! Please try again." << endl;
+            ;
     }
 }
 
 int main() {
     // Step 3: Prompt the user for a customer's name and today's date
-    cout << "Enter customer's name:" << endl;
     string customerName;
     getline(cin, customerName);
-
-    cout << "Enter today's date:" << endl;
+    
     string currentDate;
     getline(cin, currentDate);
 
-    // Output the name and date
-    cout << "\nCustomer name: " << customerName << endl;
-    cout << "Today's date: " << currentDate << endl;
 
     // Create an object of type ShoppingCart
     ShoppingCart cart(customerName, currentDate);
 
     char choice;
+    
+    cin >> choice;
+    cin.ignore();
+    
+    
+    ExecuteMenu(choice, cart);
+        if (choice == 'q') {
+           ExecuteMenu('f', cart);
+           cout << "\nCustomer name: " << customerName << endl;
+           cout << "Today's date: " << currentDate << endl;
+        } else {
+         if (choice == 'f') {
+
+             // Output the name and date
+             cout << "\nCustomer name: " << customerName << endl;
+             cout << "Today's date: " << currentDate << endl;
+             cout << endl;
+             PrintMenu();
+             cout << endl;
+             cout << "Choose an option:" << endl;
+        } else {
+           cout << endl;
+           PrintMenu();
+           cout << endl;
+        }
+        
 
     // Step 5: Display the menu, prompt for the user's choice, and execute the option
-    do {
-        PrintMenu();
+       do {
         cout << "Choose an option:" << endl;
         cin >> choice;
-        cin.ignore(); // Ignore the newline character left in the input buffer
-
+        cin.ignore();
+        // Ignore the newline character left in the input buffer
         ExecuteMenu(choice, cart);
+        if (choice == 'a' || choice == 'd' || choice == 'c' || choice == 'i' || choice == 'o') {
+           cout << endl;
+      PrintMenu();
+      cout << endl;
+   }
+        
+        
 
     } while (choice != 'q');
+        }
 
     return 0;
 }
