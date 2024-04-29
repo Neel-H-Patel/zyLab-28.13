@@ -7,13 +7,7 @@ using namespace std;
 
 
 void PrintMenu() {
-    cout << "MENU" << endl;
-    cout << "a - Add item to cart" << endl;
-    cout << "d - Remove item from cart" << endl;
-    cout << "c - Change item quantity" << endl;
-    cout << "i - Output items' descriptions" << endl;
-    cout << "o - Output shopping cart" << endl;
-    cout << "q - Quit" << endl;
+    //TBF
 }
 
 // Step 5: Implement the ExecuteMenu() function
@@ -122,42 +116,7 @@ int main() {
     cin.ignore();
     
     
-    ExecuteMenu(choice, cart);
-        if (choice == 'q') {
-          ExecuteMenu('f', cart);
-          cout << "\nCustomer name: " << customerName << endl;
-          cout << "Today's date: " << currentDate << endl;
-        } else {
-          if (choice == 'f') {
-
-            // Output the name and date
-            cout << "\nCustomer name: " << customerName << endl;
-            cout << "Today's date: " << currentDate << endl;
-            cout << endl;
-            PrintMenu();
-            cout << endl;
-            cout << "Choose an option:" << endl;
-          } else {
-            cout << endl;
-            PrintMenu();
-            cout << endl;
-          }
-        
-
-          // Step 5: Display the menu, prompt for the user's choice, and execute the option
-          do {
-            cout << "Choose an option:" << endl;
-            cin >> choice;
-            cin.ignore();
-            // Ignore the newline character left in the input buffer
-            ExecuteMenu(choice, cart);
-            if (choice == 'a' || choice == 'd' || choice == 'c' || choice == 'i' || choice == 'o') {
-              cout << endl;
-              PrintMenu();
-              cout << endl;
-            }
-          } while (choice != 'q');
-        }
+   //TBF
 
     return 0;
 }
