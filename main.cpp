@@ -7,6 +7,7 @@ using namespace std;
 
 // link: https://github.com/Neel-H-Patel/zyLab-28.14
 // Team Member: Zach Hilbert
+// Team member: Neel Patel
 
 void PrintMenu() {
     cout << "MENU" << endl;
